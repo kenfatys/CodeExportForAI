@@ -1,0 +1,2 @@
+# Optional dependency for cross-platform clipboard support
+pyperclip>=1.8.0
