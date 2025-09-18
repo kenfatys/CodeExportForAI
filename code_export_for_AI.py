@@ -32,7 +32,9 @@ def load_config():
             'create_file': config.CREATE_FILE,
             'copy_to_buffer': config.COPY_TO_CLIPBOARD,
             'blacklist_filenames': config.BLACKLIST_FILENAMES,
-            'filename_filter_mode': config.FILENAME_FILTER_MODE
+            'filename_filter_mode': config.FILENAME_FILTER_MODE,
+            'use_pygments': getattr(config, 'USE_PYGMENTS', True),
+            'extension_language_map': getattr(config, 'EXTENSION_LANGUAGE_MAP', {})
         }
     except ImportError:
         print("config.py not found, using default settings")
@@ -158,6 +160,38 @@ def read_file_content(file_path):
     print(f"Failed to read file: {file_path}")
     return None
 
+
+# ===== LANGUAGE DETECTION =====
+def detect_language(file_path, content, config):
+    """Detect a language tag for fenced code blocks using settings from config.
+
+    config is the dict returned by load_config(); expects keys:
+      - 'use_pygments' (bool)
+      - 'extension_language_map' (dict)
+    """
+    use_pygments = config.get('use_pygments', True)
+    extension_map = config.get('extension_language_map', {})
+
+    # Try pygments if enabled
+    if use_pygments:
+        try:
+            from pygments.lexers import guess_lexer_for_filename
+            lexer = guess_lexer_for_filename(file_path, content)
+            aliases = getattr(lexer, 'aliases', None)
+            if aliases:
+                return aliases[0]
+        except Exception:
+            # silently ignore and fall back to extension map
+            pass
+
+    # Fallback: extension map from config
+    _, ext = os.path.splitext(file_path)
+    if ext:
+        key = ext.lower().lstrip('.')
+        return extension_map.get(key, '')
+
+    return ''
+
 # ===== MAIN LOGIC =====
 
 def process_directory(input_dir, output_file, config, create_file=True, copy_to_buffer=False):
@@ -187,7 +221,10 @@ def process_directory(input_dir, output_file, config, create_file=True, copy_to_
             rel_dir = os.path.dirname(rel_path) or "."
             files_by_dir[rel_dir].append(os.path.basename(file))
 
-            file_content = f"{rel_path}:\n```\n{content}\n```\n\n"
+            # detect language for fenced code block
+            language = detect_language(file_path, content, config)
+            lang_tag = language if language else ''
+            file_content = f"{rel_path}:\n```{lang_tag}\n{content}\n```\n\n"
             all_content.append(file_content)
 
     # Save result
