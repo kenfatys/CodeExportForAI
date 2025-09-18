@@ -55,18 +55,22 @@ python code_export_for_AI.py -d "C:\path\to\project" -o export.txt
 ## Sample output
 Each file is exported with a relative path header followed by a fenced code block. Example:
 
+````
 src/main.py:
-```
+```python
 def hello():
     print("Hello World")
 ```
+````
 
+````
 components/button.js:
-```
+```javascript
 function Button() {
     return <button>Click me</button>
 }
 ```
+````
 
 ## Configuration
 The script loads `config.py` from the same folder (if present). Defaults are used otherwise. Key options:
@@ -79,6 +83,11 @@ The script loads `config.py` from the same folder (if present). Defaults are use
 - `COPY_TO_CLIPBOARD` — whether to copy result to clipboard
 - `BLACKLIST_FILENAMES` — filenames to ignore
 - `FILENAME_FILTER_MODE` — `'exact'` or `'contains'`
+ - `FILENAME_FILTER_MODE` — `'exact'` or `'contains'`
+ - `USE_PYGMENTS` — (bool) enable `pygments`-based detection of fenced-code language tags (default: `True`).
+ - `EXTENSION_LANGUAGE_MAP` — dict mapping extensions (no dot) to language tags used in fenced code blocks. Used as a fallback and fully user-overridable.
+
+When `USE_PYGMENTS` is enabled and `pygments` is installed the script will try to auto-detect language aliases from filename+content; otherwise it falls back to `EXTENSION_LANGUAGE_MAP`. If no language is found the code fence remains untagged. To customize, edit `config.py`.
 
 ## Tips
 - For large repositories, increase `MAX_FILE_SIZE_MB` or run on a subset of folders.
